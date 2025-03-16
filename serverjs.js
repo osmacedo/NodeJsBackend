@@ -30,7 +30,7 @@ app.use((req, res) => {
                     font-family: Arial, sans-serif;
                     text-align: center;
                     padding: 50px;
-                    background-color: #f8f8f8;
+                    background-color:rgb(59, 79, 90);
                 }
                 h1 {
                     font-size: 48px;
@@ -42,7 +42,7 @@ app.use((req, res) => {
                 }
                 a {
                     text-decoration: none;
-                    color: #007BFF;
+                    color:rgb(185, 142, 23);
                     font-size: 20px;
                 }
                 a:hover {

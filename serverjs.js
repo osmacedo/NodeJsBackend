@@ -17,9 +17,47 @@ app.get("/home",(req,res) => {
 
 app.use("/products", productRoutes);
 
-app.use((req,res) => {
-    res.status(404).send("404 not found aaa");
-})
+app.use((req, res) => {
+    res.status(404).send(`
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>404 - Página no encontrada</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    padding: 50px;
+                    background-color: #f8f8f8;
+                }
+                h1 {
+                    font-size: 48px;
+                    color: #333;
+                }
+                p {
+                    font-size: 18px;
+                    color: #666;
+                }
+                a {
+                    text-decoration: none;
+                    color: #007BFF;
+                    font-size: 20px;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>404</h1>
+            <p>Lo sentimos, la página que buscas no existe.</p>
+            <a href="/">Volver al inicio</a>
+        </body>
+        </html>
+    `);
+});
 
 app.use((err, req, res, next) => {
     console.error("Error:", err.message);

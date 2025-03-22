@@ -1,15 +1,15 @@
-const productModel = require("../models/ProductModel");
+import productModel from '../models/ProductModel.js';
 
-const getAllProducts = async (req,res,next) => {
+export const getAllProducts = async (req,res,next) => {
     try {
-        const selectedProducts = await productModel.selectProducts() //pool.query("SELECT * FROM products")
+        const selectedProducts = await productModel.selectProducts()
         res.status(200).json(selectedProducts)
     } catch (error) {
         next(error);
     }
 }
 
-const createProduct = async (req,res,next) => {
+export const createProduct = async (req,res,next) => {
     
     const {name, description} = req.body
     if (!name || !description) {
@@ -24,7 +24,7 @@ const createProduct = async (req,res,next) => {
     }
 }
 
-const removeProduct = async (req,res) => {
+export const removeProduct = async (req,res) => {
 
     try {    
         const {id} = req.params;
@@ -45,5 +45,3 @@ const removeProduct = async (req,res) => {
         res.status(500).json({error:error});
     }
 }
-
-module.exports = {getAllProducts, createProduct, removeProduct}; 

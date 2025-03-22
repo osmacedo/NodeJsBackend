@@ -1,4 +1,4 @@
-const pool = require("../config/conexionDB");
+import pool from '../config/conexionDB.js';
 console.log(pool);
 
 const productModel = {  
@@ -19,7 +19,4 @@ const productModel = {
         }
 };
 
-module.exports = productModel;
-
-
-
+export default productModel;

@@ -1,6 +1,6 @@
-const express = require("express");
+import express from 'express';
 
-const productRoutes = require("./routes/productRoutes.js");
+import productRoutes from './routes/productRoutes.js';
 
 const app = express();
 
@@ -71,4 +71,3 @@ app.use((err, req, res, next) => {
 app.listen(3000,() => {
     console.log("servidor escuchando http://localhost:3000")
 })
-

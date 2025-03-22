@@ -24,19 +24,29 @@ export const createProduct = async (req,res,next) => {
     }
 }
 
+// app.get("/products/:id, async" (req,res) => {
+
+//     try {
+//         const selectedProduct = await productModel.selectProducts() // ("SELECT * FROM products WHERE id=$1",[id])
+//         res.status(200).json(selectedProduct.rows[0])
+//     } catch (error) {
+//         next(error);
+//     }
+// })
+
 export const removeProduct = async (req,res) => {
 
     try {    
         const {id} = req.params;
 
         if (isNaN(id)) {
-            return res.status(400).json({error:"id invalido"});    
+            return res.status(400).json({"error":"id invalido"});    
         }
     
         const deletedProduct = await productModel.deleteProduct(id);
     
         if (!deletedProduct) {
-            return res.status(404).json({error:"Producto no encontrado"});    
+            return res.status(404).json({"error":"Producto no encontrado"});    
         }
         res.status(200).json({message:"producto eliminado ", deletedProduct});
         

@@ -3,12 +3,18 @@ console.log(pool);
 
 const productModel = {  
     selectProducts:async() => {
-    const result = await pool.query("SELECT * FROM products");
-    return result.rows;
+        const result = await pool.query("SELECT * FROM products");
+        return result.rows;
     },
+
+    selectProduct:async(id) => {
+        const result = await pool.query("SELECT * FROM products WHERE id=$1",[id]);
+        return result.rows[0];
+    },
+
     insertProduct:async(name, description) => {
-    const result = await pool.query(
-        "INSERT INTO products(name, description)	VALUES ($1, $2) RETURNING *", [name, description])
+        const result = await pool.query(
+            "INSERT INTO products(name, description)	VALUES ($1, $2) RETURNING *", [name, description])
         return result.rows[0];
 
     },
